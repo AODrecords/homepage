@@ -1,0 +1,111 @@
+<!--
+Responsive webpage with a fullscreen background image and a centered clickable logo
+Opens bandcamp in a new tab when logo is clicked.
+
+How to use:
+1. Save this file as `responsive-center-logo.html`.
+2. Place your background image at `images/background.jpg` and your logo at `images/logo.png` (or update the paths below).
+3. Open the file in a browser to preview, or upload to any static host (GitHub Pages, Netlify, Cloudflare Pages, etc.).
+4. Replace image files with optimized WebP/AVIF versions for best performance; keep the same filenames or update paths.
+
+Notes:
+- The logo is responsive via `clamp()` so it scales between a sensible min and max.
+- The anchor opens Bandcamp in a new tab (`target="_blank"`) with `rel="noopener noreferrer"` for security.
+- Accessibility: the image has an alt attribute and there's a visually-hidden link text for screen readers.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>An Occasional Dream</title>
+
+  <!-- Preload critical images (optional) -->
+  <link rel="preload" href="images/aod_logo.png" as="image">
+
+  <style>
+    /* Simple reset */
+    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+
+    /* Visually-hidden helper for screen readers */
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    /* Page container: background covers whole viewport */
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:2rem;
+
+      /* Background image - replace with your path */
+      background-image: url('images/background.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+
+      /* A subtle overlay for contrast (optional) */
+      position:relative;
+    }
+
+    /* Optional overlay layer to ensure text/logo contrast */
+    .hero::before{
+      content:"";
+      position:absolute;inset:0;
+      background:linear-gradient(rgba(0,0,0,0.18), rgba(0,0,0,0.18));
+      pointer-events:none;
+    }
+
+    /* Logo wrapper sits above overlay */
+    .logo-wrap{position:relative;z-index:1;text-align:center}
+
+    .logo-link{display:inline-block;outline:none}
+    .logo-link img{
+      display:block;max-width:100%;height:auto;
+      /* Responsive sizing: at least 120px, up to 300px, scales with viewport */
+      width:clamp(120px, 20vw, 300px);
+      /* Gentle image rendering for logos */
+      image-rendering: -webkit-optimize-contrast;
+    }
+
+    /* Make sure focus is visible for keyboard users */
+    .logo-link:focus{box-shadow:0 0 0 4px rgba(255,255,255,0.16);border-radius:8px}
+
+    /* Simple small-screen tweaks */
+    @media (max-width:420px){
+      .hero{padding:1rem}
+      .logo-link img{width:clamp(96px, 28vw, 180px)}
+    }
+  </style>
+</head>
+<body>
+
+  <main class="hero" role="main">
+    <div class="logo-wrap">
+      <!-- Clickable logo: change href if you want it to open in same tab -->
+      <a class="logo-link" href="https://www.aodrecords.bandcamp.com" rel="noopener noreferrer" aria-label="Visit Bandcamp">
+        <!-- Provide appropriate alt text for the logo image -->
+        <img src="images/aod_logo.png" srcset="images/logo@2x.png 2x" alt="Site logo">
+        <span class="sr-only">Visit Bandcamp</span>
+      </a>
+    </div>
+  </main>
+
+  <!--
+    Optional: small script to enhance UX (no dependency). Example: allow clicking/tapping the hero to follow the logo link.
+    Uncomment if you'd like this behavior.
+  -->
+  <!--
+  <script>
+    document.querySelector('.hero').addEventListener('click', function(e){
+      // If user clicked the background (not the link), follow the logo link
+      if (!e.target.closest('.logo-link')){
+        window.open('https://www.bandcamp.com', '_blank', 'noopener');
+      }
+    });
+  </script>
+  -->
+
+</body>
+</html>
