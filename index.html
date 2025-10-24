@@ -77,6 +77,19 @@ Notes:
   .hero{padding:1rem}
   .logo-link img{width:clamp(288px, 84vw, 540px);}
     }
+ 
+  /* Landscape mode improvements */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    padding: 1rem;
+    background-position: center center;
+  }
+
+  .logo-link img {
+    width: clamp(240px, 40vh, 600px);
+    max-height: 60vh;
+  }
+}
   </style>
 </head>
 <body>
