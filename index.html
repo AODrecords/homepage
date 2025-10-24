@@ -78,16 +78,20 @@ Notes:
   .logo-link img{width:clamp(288px, 84vw, 540px);}
     }
  
-  /* Landscape mode improvements */
-@media (max-height: 500px) and (orientation: landscape) {
+/* Landscape mode: smaller logo & corrected centering */
+@media (orientation: landscape) and (max-height: 600px) {
   .hero {
-    padding: 1rem;
+    min-height: 100svh; /* Use the safe visual viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-position: center center;
+    padding: 1rem;
   }
 
   .logo-link img {
-    width: clamp(240px, 40vh, 600px);
-    max-height: 60vh;
+    transform: scale(0.85); /* 85% of original size */
+    transform-origin: center center;
   }
 }
   </style>
