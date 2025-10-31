@@ -22,7 +22,7 @@ Notes:
   <title>An Occasional Dream</title>
 
   <!-- Preload critical images (optional) -->
-  <link rel="preload" href="images/aod_logo.webp" as="image">
+  <link rel="preload" href="images/aod_logo.webp" as="image/webp">
 
   <style>
     /* Simple reset */
@@ -114,6 +114,10 @@ Notes:
     transform-origin: center center;
   }
 }
+
+  /* ✨ Fade effect */
+  transition: background-image 0.6s ease-in-out;
+    
   </style>
 </head>
 <body>
@@ -144,5 +148,12 @@ Notes:
   </script>
   -->
 
+<script>
+  window.addEventListener('load', () => {
+    const hero = document.querySelector('.hero');
+    hero.style.backgroundImage = "url('images/background.webp')";
+  });
+</script>
+  
 </body>
 </html>
