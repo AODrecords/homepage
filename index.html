@@ -4,7 +4,7 @@ Opens bandcamp in a new tab when logo is clicked.
 
 How to use:
 1. Save this file as `responsive-center-logo.html`.
-2. Place your background image at `images/background.jpg` and your logo at `images/logo.png` (or update the paths below).
+2. Place your background image at `images/background.webp` and your logo at `images/logo.webp` (or update the paths below).
 3. Open the file in a browser to preview, or upload to any static host (GitHub Pages, Netlify, Cloudflare Pages, etc.).
 4. Replace image files with optimized WebP/AVIF versions for best performance; keep the same filenames or update paths.
 
@@ -22,7 +22,7 @@ Notes:
   <title>An Occasional Dream</title>
 
   <!-- Preload critical images (optional) -->
-  <link rel="preload" href="images/aod_logo.png" as="image">
+  <link rel="preload" href="images/aod_logo.webp" as="image">
 
   <style>
     /* Simple reset */
@@ -40,7 +40,7 @@ Notes:
       padding:2rem;
 
       /* Background image - replace with your path */
-      background-image: url('images/background.jpg');
+      background-image: url('images/background.webp');
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
@@ -123,7 +123,7 @@ Notes:
       <!-- Clickable logo: change href if you want it to open in same tab -->
       <a class="logo-link" href="https://aodrecords.bandcamp.com" rel="noopener noreferrer" aria-label="Visit Bandcamp">
         <!-- Provide appropriate alt text for the logo image -->
-        <img src="images/aod_logo.png" alt="Site logo">
+        <img src="images/aod_logo.webp" alt="Site logo">
         <span class="sr-only">Visit Bandcamp</span>
       </a>
     </div>
